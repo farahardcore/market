@@ -1,0 +1,229 @@
+@main-color: rgb(247, 191, 72);
+
+@font-face {
+    font-family: Horta;
+    src: url("../fonts/18057.ttf");
+}
+
+body {
+    background-image: url("../background/email-pattern.png");
+    color: @main-color;
+    font-size: 20px;
+    font-family: Horta;
+    animation: linear 50s customBackground infinite;
+}
+
+@keyframes customBackground {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -1000px;
+    }
+}
+
+header {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    text-align: center;
+
+    .navigation {
+        display: flex;
+        justify-content: center;
+
+        .navigation__item {
+            height: 20px;
+            width: 30%;
+            text-align: center;
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid @main-color;
+            border-radius: 10px;
+            background-color: white;
+
+        }
+
+        .navigation__item:hover {
+            box-shadow: 0 0 15px rgba(220, 62, 42, .7);
+            transform: translateY(-7px);
+            background-color: @main-color;
+            color: white;
+        }
+    }
+
+    #view {
+        position: absolute;
+        top: 90px;
+        left: 370px;
+        width: 50%;
+        color: @main-color;
+        font-size: 30px;
+    }
+
+    .logo {
+        img {
+            height: 200px;
+            width: 200px;
+        }
+    }
+
+    .nav {
+        img {
+            height: 150px;
+        }
+
+        cursor: pointer;
+
+        .nav__item {
+            position: relative;
+        }
+
+        .nav__title {
+            margin: -35px;
+            margin-right: -50px;
+        }
+
+        .nav__badge {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            min-width: 50px;
+            height: 20px;
+            padding: 15px 3px;
+            text-align: center;
+            background: @main-color;
+            border-radius: 40px;
+            font-size: 30px;
+            line-height: 20px;
+            color: white;
+        }
+    }
+}
+
+.goods {
+    display: grid;
+    margin-top: 25px;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    .goods__item {
+        text-align: center;
+        position: relative;
+        width: 240px;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 0 40px 40px 20px;
+        transition: 0.3s all;
+        background-color: white;
+        border: 2px solid @main-color;
+    }
+    .goods__item:hover {
+        border : 5px solid @main-color;
+        box-shadow: 0 0 15px rgba(220, 62, 42, .7);
+    }
+
+    .goods__img {
+        width: 220px;
+        height: 300px;
+    }
+
+    .goods__colors {
+        font-size: 25px;
+        text-align: center;
+        margin-top: 5px;
+        color: #850924;
+    }
+
+    .goods__title {
+        color: #0e2a86;
+        margin-top: 5px;
+    }
+
+    .goods__price {
+        text-align: center;
+        color:@main-color;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    .goods__btn {
+        width: 100%;
+        height: 40px;
+        background-color:@main-color;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        margin-top: 20px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        
+    }
+    .goods__btn:hover {
+        box-shadow: 0 0 15px rgba(220, 62, 42, .7);
+        background-color: white ;
+        border: 2px solid @main-color;
+        color: @main-color;
+    }
+
+}
+
+
+.cart {
+    .cart__body {
+        width: 900px;
+        margin-left: 250px;
+        text-align: center;
+        height: 100%;
+        background-color: #fff;
+        border: 10px solid @main-color;
+        padding: 25px;
+        overflow: auto;
+    }
+
+    .cart__title {
+        font-size: 28px;
+        color: black;
+    }
+
+    .cart__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 25px;
+
+        .empty {
+            font-size: 24px;
+            color: black;
+        }
+
+        .goods__item {
+            margin-right: 75px;
+        }
+    }
+
+    .cart__total {
+        font-size: 25px;
+
+        span {
+            color: black;
+        }
+    }
+
+    .cart__confirm {
+        width: 280px;
+        height: 40px;
+        display: block;
+        margin: 0 auto;
+        background-color: white;
+        border: 5px solid @main-color;
+        margin-top: 100px;
+        color: @main-color;
+        font-weight: bold;
+        padding: 0;
+        border-radius: 10px;
+    }
+    .cart__confirm:hover {
+            box-shadow: 0 0 15px rgba(220, 62, 42, .7);
+            background-color: @main-color;
+            color: white;
+        }
+}
