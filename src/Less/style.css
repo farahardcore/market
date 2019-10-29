@@ -84,7 +84,7 @@ header .nav .nav__badge {
 .goods {
   display: grid;
   margin-top: 25px;
-  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 .goods .goods__item {
   text-align: center;
@@ -135,7 +135,7 @@ header .nav .nav__badge {
 }
 .goods .goods__btn:hover {
   box-shadow: 0 0 15px rgba(220, 62, 42, 0.7);
-  background-color: white ;
+  background-color: white;
   border: 2px solid #f7bf48;
   color: #f7bf48;
 }
@@ -153,17 +153,79 @@ header .nav .nav__badge {
   font-size: 28px;
   color: black;
 }
-.cart .cart__wrapper {
+.cart .cart__items {
   display: flex;
-  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr;
   margin-top: 25px;
 }
-.cart .cart__wrapper .empty {
+.cart .cart__items .empty {
   font-size: 24px;
   color: black;
 }
-.cart .cart__wrapper .goods__item {
-  margin-right: 75px;
+.cart .cart__items .cart__item {
+  text-align: center;
+  border: 2px solid #f7bf48;
+  margin: 10px;
+  padding: 10px;
+}
+.cart .cart__items .cart__item .goods__img {
+  width: 150px;
+  height: 200px;
+}
+.cart .cart__items .cart__item .goods__colors {
+  display: none;
+}
+.cart .cart__items .cart__item .goods__title {
+  color: #0e2a86;
+  margin-top: 5px;
+  font-size: 10px;
+}
+.cart .cart__items .cart__item .goods__price {
+  text-align: center;
+  color: #f7bf48;
+  margin-top: 5px;
+  font-weight: bold;
+}
+.cart .cart__items .cart__item .goods__btn {
+  display: none;
+}
+.cart .cart__items .triger {
+  width: 280px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+  background-color: white;
+  border: 5px solid #f7bf48;
+  margin-top: 10px;
+  color: #f7bf48;
+  font-weight: bold;
+  padding: 0;
+  border-radius: 10px;
+}
+.cart .cart__items .triger:hover {
+  box-shadow: 0 0 15px rgba(220, 62, 42, 0.7);
+  background-color: red;
+  border: none;
+  color: white;
+}
+.cart .cart__delete {
+  width: 280px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+  background-color: white;
+  border: 5px solid #f7bf48;
+  margin-top: 10px;
+  color: #f7bf48;
+  font-weight: bold;
+  padding: 0;
+  border-radius: 10px;
+}
+.cart .cart__delete:hover {
+  box-shadow: 0 0 15px rgba(220, 62, 42, 0.7);
+  background-color: red;
+  color: white;
+  border: 5px solid red;
 }
 .cart .cart__total {
   font-size: 25px;
@@ -178,7 +240,7 @@ header .nav .nav__badge {
   margin: 0 auto;
   background-color: white;
   border: 5px solid #f7bf48;
-  margin-top: 100px;
+  margin-top: 10px;
   color: #f7bf48;
   font-weight: bold;
   padding: 0;

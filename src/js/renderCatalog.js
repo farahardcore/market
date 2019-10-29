@@ -1,16 +1,14 @@
-import {loadContent} from "./contentLoader.js";
+
 
 
 export function renderCatalog(){
     let catalogBtn = document.getElementById("catalogBtn");
     catalogBtn.addEventListener("click", ()=>{
-        getItem();
+        getItem("list");
     })
 }
-function getItem(){
-    if(localStorage.getItem("list")){
-        view.innerHTML = localStorage.getItem("list");
+function getItem(data){
+    if(localStorage.getItem(data)){
+        view.innerHTML = localStorage.getItem(data);
     }
 }
-let el = document.querySelectorAll("button");
-console.log(el);

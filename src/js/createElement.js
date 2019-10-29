@@ -1,5 +1,4 @@
 import {view} from "./router.js";
-import { Cart } from "./basket.js";
 export function createElement(arr) {
     arr.forEach(function (item) {
         let card = document.createElement("div");
@@ -17,13 +16,9 @@ export function createElement(arr) {
                         <button class="goods__btn">Добавить в корзину</button>`;
         view.appendChild(card);
     });
-    toLocal();
-    // searchElement();
+    toLocal( "list");
 }
-function toLocal(){
+function toLocal(text ){
     let list = view.innerHTML;
-    localStorage.setItem("list", list);
+    localStorage.setItem(text, list);
 }
-// function searchElements(elements){
-//     return 
-// }
