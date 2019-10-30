@@ -11,14 +11,14 @@ export function createElement(arr) {
                             <p>${item.description}</p>
                         </div>
                         <div class="goods__price">
-                            <span>${item.price}</span>
+                            <span >${item.price}</span>
                         </div>
                         <button class="goods__btn">Добавить в корзину</button>`;
         view.appendChild(card);
     });
     toLocal( "list");
 }
-function toLocal(text ){
+export function toLocal(text){
     let list = view.innerHTML;
     localStorage.setItem(text, list);
 }

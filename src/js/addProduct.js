@@ -1,7 +1,8 @@
 import { view } from "./router.js";
 import { Cart } from "./basket.js";
+import { toLocal } from "./createElement.js";
 
-
+export const badge = document.getElementById("nav__badge");
 export function addProduct(){
     view.addEventListener("click", function(e){
         e.preventDefault();
@@ -18,8 +19,22 @@ export function addProduct(){
                 img : image
             };
             Cart.addProduct(obj);
+            countBadge();
+            toLocal("cart");
         }
-        // console.log(Cart.products)
         Cart.drawInCart();
     })
+}
+function countBadge(){
+    for(let i = 0;i < Cart.products.length; i++){
+        badge.textContent = i+1;
+        console.log(badge.textContent);
+        if(Cart.products == []){
+            badge.textContent = 0;
+        }
+    }
+}
+export function getPrice(obj){
+    let result = obj.price;
+    console.log(result);
 }
