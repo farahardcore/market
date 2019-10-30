@@ -11,7 +11,7 @@ export function createElement(arr) {
                             <p>${item.description}</p>
                         </div>
                         <div class="goods__price">
-                            <span><h4>${item.price}</h4></span>
+                            <span>${item.price}</span>
                         </div>
                         <button class="goods__btn">Добавить в корзину</button>`;
         view.appendChild(card);

@@ -10,8 +10,8 @@ export function customRouter() {
         let routeInfo = myRouter.routes.filter((r) => {
             return r.path === route;
         })[0];
-        console.log(route);
-        console.log(routeInfo);
+        // console.log(route);
+        // console.log(routeInfo);
         if (!routeInfo) {
             window.history.pushState({}, "", "404");
             view.innerHTML = `No route exists with this path  `
