@@ -19,22 +19,14 @@ export function addProduct(){
                 img : image
             };
             Cart.addProduct(obj);
-            countBadge();
+            Cart.counter();
             toLocal("cart");
         }
         Cart.drawInCart();
+        console.log(Cart.products);
+
     })
 }
-function countBadge(){
-    for(let i = 0;i < Cart.products.length; i++){
-        badge.textContent = i+1;
-        console.log(badge.textContent);
-        if(Cart.products == []){
-            badge.textContent = 0;
-        }
-    }
-}
-export function getPrice(obj){
-    let result = obj.price;
-    console.log(result);
-}
+
+
+

@@ -7,7 +7,7 @@ export function renderCatalog(){
         getItem("list");
     })
 }
-function getItem(data){
+ export function getItem(data){
     if(localStorage.getItem(data)){
         view.innerHTML = localStorage.getItem(data);
     }
