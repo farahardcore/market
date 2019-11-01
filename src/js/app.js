@@ -7,9 +7,9 @@ import { addProduct, badge } from "./addProduct.js";
 
 customRouter();
 renderCatalog();
-loadContent("../db.json");
 if(localStorage.getItem("badge")){
     badge.textContent = localStorage.getItem("badge")
 }
+loadContent("../db.json");
 addProduct();
 

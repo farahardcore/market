@@ -312,3 +312,49 @@ header .nav .nav__badge {
   border: 2px solid #f7bf48;
   font-weight: bold ;
 }
+.newss {
+  display: flex;
+  flex-direction: column;
+  margin-left: 266px;
+  border: 5px solid #f7bf48;
+  background-color: #f7bf48;
+}
+.newss .news__item {
+  margin: 5px;
+  text-align: center;
+  background-color: ghostwhite;
+}
+.newss .news__item .title {
+  margin-top: 30px;
+  font-size: 50px;
+}
+.newss .news__item img {
+  border: 2px solid #f7bf48;
+}
+.newss .news__item h6 {
+  font-size: 25px;
+}
+.aboutt {
+  display: grid;
+}
+.aboutt span {
+  font-size: 60px;
+  color: black;
+}
+.aboutt .title {
+  margin-top: 20px;
+  font-size: 30px;
+}
+.aboutt .list {
+  color: red;
+}
+.aboutt .contacts {
+  font-size: 100px;
+}
+.aboutt .contacts .text {
+  font-size: 40px;
+}
+.back {
+  width: 900px;
+  margin-top: 200px;
+}

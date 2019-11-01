@@ -1,5 +1,5 @@
 import { view, innerCart } from "./router.js";
-import { Cart } from "./basket.js";
+import { Cart, badgeLoader } from "./basket.js";
 import { toLocal } from "./createElement.js";
 
 export const badge = document.getElementById("nav__badge");
@@ -20,12 +20,15 @@ export function addProduct(){
             };
             Cart.addProduct(obj);
             Cart.counter();
-
         }
         let cartBtn = document.getElementById("nav__cart-img");
         cartBtn.addEventListener("click",()=>{
-            Cart.drawInCart();
-            toLocal("cart");
+            if(localStorage.getItem("cart")){
+                Cart.drawInCart();
+            }else{
+                Cart.drawInCart();
+                toLocal("cart");
+            }
         })
         if(target.innerHTML == "Очистить корзину"){
                Cart.clearBasket();
@@ -37,6 +40,5 @@ export function addProduct(){
 
     })
 }
-
 
 

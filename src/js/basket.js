@@ -57,26 +57,24 @@ class Basket {
                     target = target.parentNode;
                     target = target.parentNode;
                     target = target.parentNode;
-                    let price = target.querySelector(".price");
                     Cart.products.pop();
                     target.classList.add("hidden");
                     badge.textContent = badge.textContent - 1;
                     if(badge.textContent == 0){
                         view.innerHTML = innerCart;
+
                     }
-                   badgeLoader(badge)
+                    toLocal("cart")
+                    badgeLoader("badge");
                 }
             })
         }
         this.counter = function () {
             for(let i = 0;i < Cart.products.length; i++){
                 badge.textContent = i+1;
-                badgeLoader(badge);
-                if(Cart.products == []){
-                    badge.textContent = 0;
-                }
+                badgeLoader(badge)
+                console.log(Cart.products);
             }
-            badgeLoader(badge);
         }
         this.confirm = function(){
             let div = document.createElement("div");
