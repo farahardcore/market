@@ -1,13 +1,13 @@
 
-import { renderCatalog } from "./renderCatalog.js";
+import { renderCatalog, getItem } from "./renderCatalog.js";
+import { badge } from "./addProduct.js";
 
 export let view = document.getElementById("view");
-export let innerCart = `<div class="cart__body">
+export let innerCart = `
 <div class="cart__wrapper">
     <div class="empty">
          Ваша корзина пока пуста
      </div>
-</div>
 </div>`
 export function customRouter() {
     let activeRoutes = Array.from(document.querySelectorAll("[route]"));
@@ -17,15 +17,17 @@ export function customRouter() {
         let routeInfo = myRouter.routes.filter((r) => {
             return r.path === route;
         })[0];
-        // console.log(route);
-        // console.log(routeInfo);
         if (!routeInfo) {
             window.history.pushState({}, "", "404");
             view.innerHTML = `No route exists with this path  `
         }
         else if(routeInfo.path == "/") {
             window.history.pushState({}, "", routeInfo.path);
-            view.innerHTML = renderCatalog();
+            if(localStorage.getItem("badge")){
+                badge.textContent = localStorage.getItem("badge");
+                 view.innerHTML = renderCatalog();
+            }
+           
         }else if(routeInfo.path == "/news"){
             window.history.pushState({}, "", routeInfo.path);
             view.innerHTML = `News`
@@ -34,7 +36,12 @@ export function customRouter() {
             view.innerHTML = `About`
         }else if(routeInfo.path == "/cart"){
             window.history.pushState({}, "", routeInfo.path);
-            view.innerHTML = innerCart;
+            if(localStorage.getItem("cart")){
+                view.innerHTML = localStorage.getItem("cart");
+                badge.textContent = localStorage.getItem("badge");
+            }else{
+                view.innerHTML = innerCart;
+            }
         }
     };
 

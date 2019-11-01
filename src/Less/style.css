@@ -154,6 +154,17 @@ header .nav .nav__badge {
   border: 10px solid #f7bf48;
   min-height: 250px;
 }
+.cart .cart__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 25px 0 25px 0;
+  width: 1400px;
+  text-align: center;
+  height: 100%;
+  background-color: #fff;
+  border: 10px solid #f7bf48;
+  min-height: 250px;
+}
 .cart .empty {
   display: grid;
   font-size: 40px;

@@ -178,7 +178,18 @@ header {
 
 
 .cart {
-    .cart__body {
+    .cart__body{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 25px 0 25px 0;
+        width: 1400px;
+        text-align: center;
+        height: 100%;
+        background-color: #fff;
+        border: 10px solid @main-color;
+        min-height: 250px;
+    }
+    .cart__wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr;
         margin: 25px 0 25px 0;

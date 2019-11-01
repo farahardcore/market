@@ -23,11 +23,15 @@ export function addProduct(){
             toLocal("cart");
 
         }
-        Cart.drawInCart();
+        let cartBtn = document.getElementById("nav__cart-img");
+        cartBtn.addEventListener("click",()=>{
+            Cart.drawInCart();
+        })
         if(target.innerHTML == "Очистить корзину"){
                Cart.clearBasket();
         }else if(target.innerHTML == "Оформить заказ"){
             Cart.confirm();
+            Cart.sendData();
         }
         console.log(Cart.products);
 

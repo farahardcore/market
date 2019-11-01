@@ -2,8 +2,7 @@ import { view, innerCart} from "./router.js";
 import { badge,} from "./addProduct.js";
 import { getItem } from "./renderCatalog.js";
 import { toLocal } from "./createElement.js";
-
-// import { drawInCart } from "./drawInCart.js";
+// import {reqData} from "./reqData.js"
 class Basket {
     constructor() {
         this.products = [],
@@ -14,37 +13,36 @@ class Basket {
             }
             }
         this.drawInCart = function () {
-            if (this.products != {}) {
-                let cartBtn = document.getElementById("nav__cart-img");
+            if (this.products != []) {
                 let out = "";
                 let elem = document.createElement("div");
                 elem.classList.add("cart__body");
-                cartBtn.addEventListener("click", function (e) {
-                    Cart.products.forEach(function (element) {
-                        out += `<div class="cart__items">
-                                    <div class="cart__item">
-                                        <div class="goods__img">
-                                            <img class="img" src=${element.img}>
+                Cart.products.forEach(function (element) {
+                    out += `<div class="cart__items">
+                                        <div class="cart__item">
+                                            <div class="goods__img">
+                                                <img class="img" src=${element.img}>
+                                            </div>
+                                            <div class="goods__price">
+                                                <span class="price">${element.price}</span>
+                                                <span class="goods__title">${element.title}</span>
+                                                <button class="trigger">Удалить из корзины</button>
+                                            </div>
                                         </div>
-                                        <div class="goods__price">
-                                            <span class="price">${element.price}</span>
-                                            <span class="goods__title">${element.title}</span>
-                                            <button class="trigger">Удалить из корзины</button>
-                                        </div>
-                                    </div>
-                                </div>`
-                        view.innerHTML = "";
-                        view.appendChild(elem);
-                    })
-                    out += `<div class="cart__btns">
-                    <button class="cart__confirm">Оформить заказ</button>
-                    <button class="cart__delete">Очистить корзину</button>
-                            </div>
-                            `
-                    elem.innerHTML = out;
-                    toLocal("cart");
-                }, {onse : true})
+                                    </div>`
+                    view.innerHTML = "";
+                    view.appendChild(elem);
+                })
+                out += `<div class="cart__btns">
+                        <button class="cart__confirm">Оформить заказ</button>
+                        <button class="cart__delete">Очистить корзину</button>
+                                </div>
+                                `
+                elem.innerHTML = out;
+            } else {
+                console.log("товар уже есть в корзине");
             }
+            toLocal("cart");
         }
         this.clearBasket = function () {
             Cart.products = [];
@@ -52,6 +50,7 @@ class Basket {
             badge.textContent = 0;
         }
         this.removeOne = function(){
+            let view = document.getElementById("view");
             view.addEventListener("click", function(e){
                 e.preventDefault();
                 let target = e.target;
@@ -66,6 +65,10 @@ class Basket {
                     if(badge.textContent == 0){
                         view.innerHTML = innerCart;
                     }
+                   (function(str){
+                       str = badge.textContent;
+                     localStorage.setItem("badge", str);
+                   })();
                 }
                 toLocal("cart");
             })
@@ -73,19 +76,20 @@ class Basket {
         this.counter = function () {
             for(let i = 0;i < Cart.products.length; i++){
                 badge.textContent = i+1;
+                badgeLoader(badge);
                 if(Cart.products == []){
                     badge.textContent = 0;
                 }
             }
+            badgeLoader(badge);
         }
         this.confirm = function(){
             let div = document.createElement("div");
             let form = document.createElement ("form");
             form.classList.add("confirm__form");
             form.innerHTML = `
-            <input type="text" placeholder="Введите ваше имя">
-            
-            <input type="text" placeholder="Введите ваш телефон">
+            <input id="name" type="text" placeholder="Введите ваше имя">
+            <input id="phone" type="text" placeholder="+375XXXXXXXXX">
             <div>Cумма вашего заказа:<span id="span">0</span></div>
             <input id="submit" type="submit" value="Подтвердить">`
             div.appendChild(form);
@@ -101,6 +105,12 @@ class Basket {
                console.log(result);
             }
         }
+        this.sendData =function(){
+            sendData();
+        }
+        this.sum = function(){
+            
+        }
     }
 }
 
@@ -108,4 +118,33 @@ export let Cart = new Basket();
 Cart.removeOne();
 
 
-
+function sendData() {
+    let submit = view.querySelector("#submit");
+    submit.addEventListener("click", function () {
+        let name = view.querySelector("#name"),
+            phone = view.querySelector("#phone"),
+            regName = /[А-Я][а-я]+\s[А-Я][а-я]+/g,
+            regPhone = /\+375\d{9}/g;
+        if (regName.test(name.value)) {
+            name = name.value;
+            if (regPhone.test(phone.value)) {
+                phone = phone.value;
+                fetch("../cartDB.json")
+                 .then(response=>response.json())
+                 .then(data=>data.forEach(function(elem){
+                     alert(elem);
+                     Cart.clearBasket();
+                     window.location.href = "http://127.0.0.1:5500";
+                 }));
+            } else {
+                alert("Введите коректный номер телефона");
+            }
+        } else {
+            alert("Неправильно  введено имя");
+        }
+    })
+}
+function badgeLoader(str){
+    str = badge.textContent;
+    localStorage.setItem("badge", str);
+}
