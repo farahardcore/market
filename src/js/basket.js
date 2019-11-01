@@ -40,7 +40,6 @@ class Basket {
             } else {
                 console.log("товар уже есть в корзине");
             }
-            toLocal("cart");
         }
         this.clearBasket = function () {
             Cart.products = [];
@@ -67,7 +66,6 @@ class Basket {
                     }
                    badgeLoader(badge)
                 }
-                toLocal("cart");
             })
         }
         this.counter = function () {

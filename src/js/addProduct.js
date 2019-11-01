@@ -20,12 +20,12 @@ export function addProduct(){
             };
             Cart.addProduct(obj);
             Cart.counter();
-            toLocal("cart");
 
         }
         let cartBtn = document.getElementById("nav__cart-img");
         cartBtn.addEventListener("click",()=>{
             Cart.drawInCart();
+            toLocal("cart");
         })
         if(target.innerHTML == "Очистить корзину"){
                Cart.clearBasket();

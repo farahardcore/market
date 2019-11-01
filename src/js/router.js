@@ -35,13 +35,16 @@ export function customRouter() {
             view.innerHTML = `About`
         }else if(routeInfo.path == "/cart"){
             window.history.pushState({}, "", routeInfo.path);
+            view.innerHTML = innerCart;
             if(localStorage.getItem("cart")){
-                view.innerHTML = localStorage.getItem("cart");
+                    view.innerHTML = localStorage.getItem("cart");
+                }else{
+                    view.innerHTML = innerCart;
+                }
                 if(localStorage.getItem("badge")){
                     badge.textContent = localStorage.getItem("badge");
-                }
-            }else{
-                view.innerHTML = innerCart;
+                }else{
+                
             }
         }
     };

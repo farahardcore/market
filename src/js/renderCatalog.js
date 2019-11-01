@@ -1,14 +1,8 @@
+import { view } from "./router.js";
 
 export function renderCatalog(){
     let catalogBtn = document.getElementById("catalogBtn");
     catalogBtn.addEventListener("click", ()=>{
-        getItem("list");
-        
-
+    view.innerHTML =  localStorage.getItem("list");
     })
-}
- export function getItem(data){
-    if(localStorage.getItem(data)){
-        view.innerHTML = localStorage.getItem(data);
-    }
 }
