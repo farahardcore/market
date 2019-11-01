@@ -1,4 +1,4 @@
-import { view } from "./router.js";
+import { view, innerCart } from "./router.js";
 import { Cart } from "./basket.js";
 import { toLocal } from "./createElement.js";
 

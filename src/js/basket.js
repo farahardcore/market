@@ -1,8 +1,6 @@
 import { view, innerCart} from "./router.js";
 import { badge,} from "./addProduct.js";
-import { getItem } from "./renderCatalog.js";
 import { toLocal } from "./createElement.js";
-// import {reqData} from "./reqData.js"
 class Basket {
     constructor() {
         this.products = [],
@@ -46,8 +44,10 @@ class Basket {
         }
         this.clearBasket = function () {
             Cart.products = [];
-            view.innerHTML = innerCart;
+            localStorage.removeItem("badge");
             badge.textContent = 0;
+            localStorage.removeItem("cart");
+            view.innerHTML = innerCart;
         }
         this.removeOne = function(){
             let view = document.getElementById("view");
@@ -65,10 +65,7 @@ class Basket {
                     if(badge.textContent == 0){
                         view.innerHTML = innerCart;
                     }
-                   (function(str){
-                       str = badge.textContent;
-                     localStorage.setItem("badge", str);
-                   })();
+                   badgeLoader(badge)
                 }
                 toLocal("cart");
             })
@@ -90,11 +87,15 @@ class Basket {
             form.innerHTML = `
             <input id="name" type="text" placeholder="Введите ваше имя">
             <input id="phone" type="text" placeholder="+375XXXXXXXXX">
-            <div>Cумма вашего заказа:<span id="span">0</span></div>
             <input id="submit" type="submit" value="Подтвердить">`
             div.appendChild(form);
             console.log(document.body.firstChild);
             view.innerHTML = div.innerHTML;
+        }
+        this.sendData =function(){
+            sendData();
+        }
+        this.sum = function(){
             let span = view.querySelector("#span");
             if(this.products.length == 1){
                 this.products.forEach(function(elem){
@@ -104,12 +105,6 @@ class Basket {
                let result = this.products.reduce((a,b)=>a.price + b.price)
                console.log(result);
             }
-        }
-        this.sendData =function(){
-            sendData();
-        }
-        this.sum = function(){
-            
         }
     }
 }
@@ -135,16 +130,19 @@ function sendData() {
                      alert(elem);
                      Cart.clearBasket();
                      window.location.href = "http://127.0.0.1:5500";
+                     view.innerHTML = innerCart;
                  }));
             } else {
                 alert("Введите коректный номер телефона");
+                console.log(name.parentNode)
             }
         } else {
             alert("Неправильно  введено имя");
+            console.log(name.parentNode)
         }
     })
 }
-function badgeLoader(str){
+export function badgeLoader(str){
     str = badge.textContent;
     localStorage.setItem("badge", str);
 }

@@ -1,6 +1,4 @@
 
-
-
 export function renderCatalog(){
     let catalogBtn = document.getElementById("catalogBtn");
     catalogBtn.addEventListener("click", ()=>{

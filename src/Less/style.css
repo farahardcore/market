@@ -258,13 +258,6 @@ header .nav .nav__badge {
   color: white;
   border: 5px solid red;
 }
-.cart .cart__total {
-  font-size: 50px;
-  margin-top: 15px;
-}
-.cart .cart__total span {
-  color: black;
-}
 .cart .cart__confirm {
   width: 280px;
   height: 40px;
@@ -287,6 +280,11 @@ header .nav .nav__badge {
   display: grid;
   text-align: center;
 }
+.cart .cart__btns #span {
+  font-size: 40px;
+  color: black;
+  width: 100%;
+}
 .confirm__form {
   display: grid;
   margin-left: 420px;
@@ -302,12 +300,6 @@ header .nav .nav__badge {
   font-size: 25px;
   margin: 10px;
   border: 2px solid #f7bf48;
-}
-.confirm__form div {
-  font-size: 40px;
-}
-.confirm__form div span {
-  color: black;
 }
 .confirm__form #submit {
   background-color: #f7bf48;

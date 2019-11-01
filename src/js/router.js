@@ -1,5 +1,5 @@
 
-import { renderCatalog, getItem } from "./renderCatalog.js";
+import { renderCatalog } from "./renderCatalog.js";
 import { badge } from "./addProduct.js";
 
 export let view = document.getElementById("view");
@@ -25,9 +25,8 @@ export function customRouter() {
             window.history.pushState({}, "", routeInfo.path);
             if(localStorage.getItem("badge")){
                 badge.textContent = localStorage.getItem("badge");
-                 view.innerHTML = renderCatalog();
+                view.innerHTML = renderCatalog();
             }
-           
         }else if(routeInfo.path == "/news"){
             window.history.pushState({}, "", routeInfo.path);
             view.innerHTML = `News`
@@ -38,7 +37,9 @@ export function customRouter() {
             window.history.pushState({}, "", routeInfo.path);
             if(localStorage.getItem("cart")){
                 view.innerHTML = localStorage.getItem("cart");
-                badge.textContent = localStorage.getItem("badge");
+                if(localStorage.getItem("badge")){
+                    badge.textContent = localStorage.getItem("badge");
+                }
             }else{
                 view.innerHTML = innerCart;
             }
