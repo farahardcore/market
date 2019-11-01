@@ -37,8 +37,8 @@ header .navigation .navigation__item {
   background-color: white;
 }
 header .navigation .navigation__item:hover {
-  box-shadow: 0 0 15px rgba(220, 62, 42, 0.7);
-  transform: translateY(-7px);
+  box-shadow: 0 5px 15px rgba(220, 62, 42, 0.7);
+  transform: translateY(-2px);
   background-color: #f7bf48;
   color: white;
 }
@@ -51,6 +51,9 @@ header .nav {
 }
 header .nav img {
   height: 150px;
+}
+header .nav img:hover {
+  height: 170px;
 }
 header .nav .nav__item {
   position: relative;
@@ -81,8 +84,7 @@ header .nav .nav__badge {
 }
 .goods .goods__item {
   text-align: center;
-  position: relative;
-  width: 240px;
+  width: 260px;
   padding: 10px;
   border-radius: 10px;
   margin: 0 40px 40px 20px;
@@ -98,6 +100,10 @@ header .nav .nav__badge {
   width: 220px;
   height: 300px;
 }
+.goods .goods__img:hover {
+  width: 230px;
+  height: 320px;
+}
 .goods .goods__colors {
   font-size: 25px;
   text-align: center;
@@ -105,14 +111,21 @@ header .nav .nav__badge {
   color: #850924;
 }
 .goods .goods__title {
+  height: 150px;
   color: #0e2a86;
   margin-top: 5px;
 }
 .goods .goods__price {
+  height: 30px;
   text-align: center;
   color: #f7bf48;
   margin-top: 5px;
   font-weight: bold;
+}
+.goods .goods__price:hover {
+  color: red;
+  font-weight: bold;
+  font-size: 25px;
 }
 .goods .goods__btn {
   width: 100%;
@@ -120,14 +133,12 @@ header .nav .nav__badge {
   background-color: #f7bf48;
   border: none;
   border-radius: 10px;
-  outline: none;
-  margin-top: 20px;
   color: white;
   font-weight: bold;
   cursor: pointer;
 }
 .goods .goods__btn:hover {
-  box-shadow: 0 0 15px rgba(220, 62, 42, 0.7);
+  box-shadow: 0 0 15px rgba(109, 25, 14, 0.7);
   background-color: white;
   border: 2px solid #f7bf48;
   color: #f7bf48;
@@ -143,14 +154,15 @@ header .nav .nav__badge {
   border: 10px solid #f7bf48;
   min-height: 250px;
 }
-.cart .cart__title {
-  margin-top: 15px;
-  font-size: 50px;
-  color: black;
-}
 .cart .empty {
-  font-size: 50px;
+  display: grid;
+  font-size: 40px;
   color: black;
+  margin-top: 100px;
+  margin-left: 650px;
+}
+.cart .empty:hover {
+  color: darkblue;
 }
 .cart .cart__items .cart__item {
   display: grid;
@@ -189,6 +201,9 @@ header .nav .nav__badge {
   margin-top: 5px;
   font-weight: bold;
   grid-area: price;
+}
+.cart .cart__items .cart__item .goods__price:hover {
+  font-size: 20px;
 }
 .cart .cart__items .cart__item .goods__btn {
   display: none;
@@ -260,4 +275,37 @@ header .nav .nav__badge {
 .cart .cart__btns {
   display: grid;
   text-align: center;
+}
+.confirm__form {
+  display: grid;
+  margin-left: 420px;
+  width: 500px;
+  text-align: center;
+  height: 100%;
+  padding: 20px;
+  background-color: #fff;
+  border: 10px solid #f7bf48;
+  min-height: 250px;
+}
+.confirm__form input {
+  font-size: 25px;
+  margin: 10px;
+  border: 2px solid #f7bf48;
+}
+.confirm__form div {
+  font-size: 40px;
+}
+.confirm__form div span {
+  color: black;
+}
+.confirm__form #submit {
+  background-color: #f7bf48;
+  color: white;
+  border-radius: 15px;
+}
+.confirm__form #submit:hover {
+  background-color: white;
+  color: #f7bf48;
+  border: 2px solid #f7bf48;
+  font-weight: bold ;
 }

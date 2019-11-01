@@ -19,8 +19,6 @@ class Basket {
                 let out = "";
                 let elem = document.createElement("div");
                 elem.classList.add("cart__body");
-                out+= `<div class="cart__title">Корзина</div>
-                <div class="cart__total">Общая сумма: <span id="price">1500</span> руб</div>`
                 cartBtn.addEventListener("click", function (e) {
                     Cart.products.forEach(function (element) {
                         out += `<div class="cart__items">
@@ -49,8 +47,9 @@ class Basket {
             }
         }
         this.clearBasket = function () {
-            this.products = [];
+            Cart.products = [];
             view.innerHTML = innerCart;
+            badge.textContent = 0;
         }
         this.removeOne = function(){
             view.addEventListener("click", function(e){
@@ -61,11 +60,7 @@ class Basket {
                     target = target.parentNode;
                     target = target.parentNode;
                     let price = target.querySelector(".price");
-                    Cart.products.forEach(function(elem){
-                        if(elem.price == price.innerHTML){
-                         Cart.products.pop(elem)
-                        }
-                    })
+                    Cart.products.pop();
                     target.classList.add("hidden");
                     badge.textContent = badge.textContent - 1;
                     if(badge.textContent == 0){
@@ -83,10 +78,34 @@ class Basket {
                 }
             }
         }
+        this.confirm = function(){
+            let div = document.createElement("div");
+            let form = document.createElement ("form");
+            form.classList.add("confirm__form");
+            form.innerHTML = `
+            <input type="text" placeholder="Введите ваше имя">
+            
+            <input type="text" placeholder="Введите ваш телефон">
+            <div>Cумма вашего заказа:<span id="span">0</span></div>
+            <input id="submit" type="submit" value="Подтвердить">`
+            div.appendChild(form);
+            console.log(document.body.firstChild);
+            view.innerHTML = div.innerHTML;
+            let span = view.querySelector("#span");
+            if(this.products.length == 1){
+                this.products.forEach(function(elem){
+                    span.innerHTML = elem.price;
+                })
+            } else if(this.products.length >= 2){
+               let result = this.products.reduce((a,b)=>a.price + b.price)
+               console.log(result);
+            }
+        }
     }
 }
 
 export let Cart = new Basket();
 Cart.removeOne();
+
 
 

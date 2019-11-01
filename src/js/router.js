@@ -3,14 +3,11 @@ import { renderCatalog } from "./renderCatalog.js";
 
 export let view = document.getElementById("view");
 export let innerCart = `<div class="cart__body">
-<div class="cart__title">Корзина</div>
-<div class="cart__total">Общая сумма: <span>0</span> руб</div>
 <div class="cart__wrapper">
     <div class="empty">
          Ваша корзина пока пуста
      </div>
 </div>
- <button class="cart__confirm">Оформить заказ</button>
 </div>`
 export function customRouter() {
     let activeRoutes = Array.from(document.querySelectorAll("[route]"));

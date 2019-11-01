@@ -21,8 +21,14 @@ export function addProduct(){
             Cart.addProduct(obj);
             Cart.counter();
             toLocal("cart");
+
         }
         Cart.drawInCart();
+        if(target.innerHTML == "Очистить корзину"){
+               Cart.clearBasket();
+        }else if(target.innerHTML == "Оформить заказ"){
+            Cart.confirm();
+        }
         console.log(Cart.products);
 
     })
