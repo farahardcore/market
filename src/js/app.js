@@ -1,7 +1,7 @@
-import {customRouter} from "./router.js";
-import {loadContent} from "./contentLoader.js";
-import {renderCatalog} from "./renderCatalog.js";
-import { addProduct, badge } from "./addProduct.js";
+import {customRouter} from ".js/router.js";
+import {loadContent} from ".js/contentLoader.js";
+import {renderCatalog} from ".js/renderCatalog.js";
+import { addProduct, badge } from "./js/addProduct.js";
 
 
 
